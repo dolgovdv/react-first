@@ -34,7 +34,6 @@ function App(props) {
   const handleAdd = title => {
     const newTodo = [...state, { id: 4, title: title, completed: false }]
     setState(newTodo)
-    console.log(state)
   }
   return (
     <main>

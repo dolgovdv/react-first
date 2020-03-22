@@ -1,21 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Button from "./Button"
 
 const Form = props => {
-  const myRef = React.createRef()
+  const [state, setState] = useState({ value: "" })
+
   const handleSubmit = event => {
     event.preventDefault()
-    const title = myRef.current.value
+    const title = state.value
     if (title) {
       props.onAdd(title)
-      myRef.current.value = ""
+      setState({ value: "" })
     }
-    // console.log("event = ", myRef.current.value)
   }
+
+  const handleChange = event => {
+    setState({ value: event.target.value })
+  }
+
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
-      <input type="text" ref={myRef} placeholder="Что нужно сделать!" />
+      <input
+        type="text"
+        value={state.value}
+        placeholder="Что нужно сделать!"
+        onChange={handleChange}
+      />
       <Button type="submit">Добавить</Button>
     </form>
   )
