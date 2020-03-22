@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 
 import Header from "./Components/Header"
 import Todo from "./Components/Todo"
+import Form from "./Components/Form"
 function App(props) {
   const [state, setState] = useState(props.todos)
 
@@ -29,6 +30,12 @@ function App(props) {
     )
     // console.log("onDelete ", id, state)
   }
+
+  const handleAdd = title => {
+    const newTodo = [...state, { id: 4, title: title, completed: false }]
+    setState(newTodo)
+    console.log(state)
+  }
   return (
     <main>
       <Header title={props.title} todos={state} />
@@ -45,6 +52,8 @@ function App(props) {
           />
         ))}
       </section>
+
+      <Form onAdd={handleAdd} />
     </main>
   )
 }
