@@ -4,6 +4,8 @@ import PropTypes from "prop-types"
 import Header from "./Components/Header"
 import Todo from "./Components/Todo"
 import Form from "./Components/Form"
+
+import FormInput from "./Components/FormInput"
 function App(props) {
   const [state, setState] = useState(props.todos)
 
@@ -53,6 +55,7 @@ function App(props) {
       </section>
 
       <Form onAdd={handleAdd} />
+      <FormInput />
     </main>
   )
 }
